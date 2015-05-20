@@ -20,6 +20,7 @@ import ua.nure.pi.dao.jdbc.JDBCRoomDAO;;
 public abstract class JDBCUserDAO implements UserDAO {
 
 	protected String SQL_SELECT_USER = "SELECT * FROM Users WHERE NickName=?";
+	protected String SQL_SELECT_USER_PASS = "SELECT * FROM Users WHERE NickName=? and Password=?";
 	protected String SQL_USER_NICK = "SELECT * FROM Users WHERE NickName = ?";
 	protected String SQL_SELECT_ALL_USERS = "SELECT * FROM Users";
 	//protected String SQL__CONTAINS_USER_WITH_LOGIN = "SELECT * FROM Users WHERE Login=?";
@@ -33,9 +34,50 @@ public abstract class JDBCUserDAO implements UserDAO {
 	@Override
 	public boolean containsUser(String login) {
 		Connection con = null;
+		Boolean result = false;
 		try {
 			con = getConnection();
-			return containsUser(con, login);
+			result = containsUser(con, login);
+		} catch (SQLException e) {
+			System.err.println("Can not check user containing." + e.getMessage());
+		} finally {
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				System.err.println("Can not close connection." + e.getMessage());
+			}
+		}
+		return result;
+	}
+
+	private boolean containsUser(Connection con, String login)
+			throws SQLException {
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = con.prepareStatement(SQL_SELECT_USER);
+			pstmt.setString(1, login);
+			ResultSet rs = pstmt.executeQuery();
+			return rs.isBeforeFirst();
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					System.err.println("Can not close connection." + e.getMessage());
+				}
+			}
+		}
+	}
+
+	@Override
+	public boolean containsUser(String login, String pass) {
+		Connection con = null;
+		try {
+			con = getConnection();
+			return containsUser(con, login, pass);
 		} catch (SQLException e) {
 			System.err.println("Can not check user containing." + e.getMessage());
 		} finally {
@@ -49,12 +91,14 @@ public abstract class JDBCUserDAO implements UserDAO {
 		return false;
 	}
 
-	private boolean containsUser(Connection con, String login)
+	private boolean containsUser(Connection con, String login, String pass)
 			throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = con.prepareStatement(SQL_SELECT_USER);
+			pstmt = con.prepareStatement(SQL_SELECT_USER_PASS);
 			pstmt.setString(1, login);
+			
+			pstmt.setString(2, Hashing.salt(pass, login));
 			ResultSet rs = pstmt.executeQuery();
 			return rs.isBeforeFirst();
 		} catch (SQLException e) {
@@ -90,6 +134,7 @@ public abstract class JDBCUserDAO implements UserDAO {
 		return user;
 	}
 
+	
 	private User getUser(Connection con, String login) throws SQLException {
 		PreparedStatement pstmt = null;
 		User user = null;

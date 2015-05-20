@@ -88,4 +88,10 @@ private static volatile MYSQLTeamLeadDAO instance;
 		return false;
 	}
 
+	@Override
+	public boolean containsUser(String login, String pass) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

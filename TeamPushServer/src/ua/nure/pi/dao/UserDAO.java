@@ -11,6 +11,8 @@ public interface UserDAO {
 
 	public boolean containsUser(String login);
 
+	public boolean containsUser(String login, String pass);
+	
 	public User getUser(String login);
 
 	public User getUser(long userId);

@@ -103,4 +103,13 @@ public class MainServiceImpl extends RemoteServiceServlet implements
 		return false;
 	}
 
+	@Override
+	public Boolean checkLogined(String login, String pass)
+			throws IllegalArgumentException {
+		if (userDAO.containsUser(login, pass)) {
+			 return true;
+		}
+		return false;
+	}
+
 }
