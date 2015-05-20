@@ -43,7 +43,7 @@ public class UserServelet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 int length = request.getContentLength();
+		 /*int length = request.getContentLength();
          byte[] input = new byte[length];
          int c, count = 0 ;
          String login;
@@ -71,7 +71,7 @@ public class UserServelet extends HttpServlet {
      	 mainservice = new MainServiceImpl();
          writer.write(mainservice.checkLogined(login, pass).toString());
          writer.flush();
-         writer.close();
+         writer.close();*/
 	}
 
 }

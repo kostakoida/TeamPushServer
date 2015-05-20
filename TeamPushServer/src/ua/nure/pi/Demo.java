@@ -19,7 +19,7 @@ public class Demo {
 		mainservice = new MainServiceImpl();
 		
 		mainservice.insertUser(user);
-		System.out.print(mainservice.checkLogined("login", "pass2"));
+		System.out.print(mainservice.checkLogined("login", "pass"));
 	}
 
 }

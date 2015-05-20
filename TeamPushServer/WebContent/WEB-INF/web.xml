@@ -5,7 +5,7 @@
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
 <servlet>
-    <servlet-name>maUserServeletin</servlet-name>
+    <servlet-name>UserServelet</servlet-name>
     <servlet-class>ua.nure.pi.servelet.UserServelet</servlet-class>
   </servlet>
   <servlet>
