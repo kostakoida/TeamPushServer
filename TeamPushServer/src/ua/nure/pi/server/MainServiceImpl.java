@@ -27,6 +27,8 @@ import ua.nure.pi.dao.TeamLeadDAO;
 import ua.nure.pi.dao.MessageDAO;
 import ua.nure.pi.dao.PassDAO;
 import ua.nure.pi.dao.UserDAO;
+import ua.nure.pi.dao.jdbc.JDBCUserDAO;
+import ua.nure.pi.dao.jdbc.mysql.MYSQLUserDAO;
 import ua.nure.pi.entity.Message;
 import ua.nure.pi.entity.Room;
 import ua.nure.pi.entity.User;
@@ -67,6 +69,10 @@ public class MainServiceImpl extends RemoteServiceServlet implements
 		 */
 	}
 
+	public MainServiceImpl()
+	{
+		userDAO = MYSQLUserDAO.getInstancce();
+	}
 	@Override
 	public void init() {
 		ServletContext servletContext = getServletContext();

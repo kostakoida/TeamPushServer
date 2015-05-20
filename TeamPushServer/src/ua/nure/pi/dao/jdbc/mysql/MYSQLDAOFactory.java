@@ -95,18 +95,6 @@ public class MYSQLDAOFactory extends DAOFactory {
 		return MYSQLPassDAO.getInstancce();
 	}
 
-	@Override
-	public RoomDAO getRoomDAO() {
-		// TODO Auto-generated method stub
-		return MYSQLRoomDAO.getInstancce();
-	}
-
-
-	@Override
-	public TeamLeadDAO getTeamLeadDAO() {
-		// TODO Auto-generated method stub
-		return MYSQLTeamLeadDAO.getInstancce();
-	}
 	
 
 

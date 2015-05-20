@@ -4,17 +4,15 @@ import ua.nure.pi.dao.jdbc.mysql.MYSQLDAOFactory;
 
 
 public abstract class DAOFactory {
+	public static final int MSSQL = 1;
+	public static final int MYSQL = 2;
 	
 	public static DAOFactory getDAOFactory() {
-
-		return MYSQLDAOFactory.getInstancce();
+			return MYSQLDAOFactory.getInstancce();
 	}
-	public abstract PassDAO getPassDAO();
-	
-	public abstract RoomDAO getRoomDAO();
+
 	
 	public abstract UserDAO getUserDAO();
 	
-	public abstract TeamLeadDAO getTeamLeadDAO();
-	
+	public abstract PassDAO getPassDAO();
 }

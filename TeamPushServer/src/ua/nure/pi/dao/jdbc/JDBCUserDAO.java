@@ -19,7 +19,7 @@ import ua.nure.pi.dao.jdbc.JDBCRoomDAO;;
 
 public abstract class JDBCUserDAO implements UserDAO {
 
-	protected String SQL_SELECT_USER = "SELECT * FROM Users WHERE UsersID=?";
+	protected String SQL_SELECT_USER = "SELECT * FROM Users WHERE NickName=?";
 	protected String SQL_USER_NICK = "SELECT * FROM Users WHERE NickName = ?";
 	protected String SQL_SELECT_ALL_USERS = "SELECT * FROM Users";
 	//protected String SQL__CONTAINS_USER_WITH_LOGIN = "SELECT * FROM Users WHERE Login=?";

@@ -9,7 +9,7 @@ public class MYSQLUserDAO extends JDBCUserDAO {
 	
 private static volatile MYSQLUserDAO instance;
 	
-	private MYSQLUserDAO() {
+	public MYSQLUserDAO() {
 		//SQL__DELETE_USER = "DELETE FROM Users WHERE UsersId = ?";
 	}
 	
