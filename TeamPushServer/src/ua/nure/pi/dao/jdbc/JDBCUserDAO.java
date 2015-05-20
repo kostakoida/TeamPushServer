@@ -318,7 +318,7 @@ public abstract class JDBCUserDAO implements UserDAO {
 	private void mapUserForUpdate(User user, PreparedStatement pstmt)
 			throws SQLException{
 		pstmt.setString(1, Hashing.salt(user.getPassword(), user.getLogin()));
-		pstmt.setLong(2, user.getUserId());
+		pstmt.setString(2, user.getLogin());
 	}
 
 	@Override
