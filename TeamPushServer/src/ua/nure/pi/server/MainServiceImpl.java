@@ -90,9 +90,14 @@ public class MainServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
-	public void insertUser(User user) throws IllegalArgumentException {
-		if (!userDAO.insertUser(user))
-			throw new IllegalArgumentException("Не удалось добавить юзера");
+	public Boolean insertUser(User user) throws IllegalArgumentException {
+		
+		if (!userDAO.insertUser(user)) {
+			 return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	@Override

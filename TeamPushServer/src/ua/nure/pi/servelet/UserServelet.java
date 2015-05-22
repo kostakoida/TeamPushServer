@@ -43,7 +43,7 @@ public class UserServelet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 /*int length = request.getContentLength();
+		 int length = request.getContentLength();
          byte[] input = new byte[length];
          int c, count = 0 ;
          String login;
@@ -58,20 +58,21 @@ public class UserServelet extends HttpServlet {
          }
 
          String all_data = new String(data);
-         login = all_data.split(all_data, '/')[0];
-         pass =  all_data.split(all_data, '/')[1];
+         System.out.print(all_data);
+         all_data = all_data.split(" ")[0];
+         System.out.print(all_data);
+         login = all_data.split("/")[0];
+         pass =  all_data.split("/")[1];
          in.close();
-
+         System.out.print(login + "/ " + pass+"/");
          String recievedString = new String(input);
          response.setStatus(HttpServletResponse.SC_OK);
          OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
 
-         Integer doubledValue = Integer.parseInt(recievedString) * 2;
-
      	 mainservice = new MainServiceImpl();
          writer.write(mainservice.checkLogined(login, pass).toString());
          writer.flush();
-         writer.close();*/
+         writer.close();
 	}
 
 }

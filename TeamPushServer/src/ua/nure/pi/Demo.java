@@ -18,7 +18,7 @@ public class Demo {
 		user.setAdmin(false);
 		mainservice = new MainServiceImpl();
 		
-		mainservice.insertUser(user);
+		//mainservice.insertUser(user);
 		System.out.print(mainservice.checkLogined("login", "pass"));
 	}
 
