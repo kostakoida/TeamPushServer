@@ -95,6 +95,12 @@ public class MYSQLDAOFactory extends DAOFactory {
 		return MYSQLPassDAO.getInstancce();
 	}
 
+
+	@Override
+	public MessageDAO getMessageDAO() {
+		return MYSQLMessageDAO.getInstancce();
+	}
+
 	
 
 

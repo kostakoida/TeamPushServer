@@ -5,6 +5,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import ua.nure.pi.dao.DAOFactory;
+import ua.nure.pi.dao.MessageDAO;
 import ua.nure.pi.dao.PassDAO;
 import ua.nure.pi.dao.RoomDAO;
 import ua.nure.pi.dao.TeamLeadDAO;
@@ -22,6 +23,7 @@ public class ContextListener implements ServletContextListener {
 		ServletContext servletContext = event.getServletContext();
 		//setRoomDAOAttribute(servletContext);
 		setUserDAOAttribute(servletContext);
+		setMessageDAOAttribute(servletContext);
 	//	setTeamLeadDAOAttribute(servletContext);
 	//	setPassDAOAttribute(servletContext);
 	}
@@ -40,6 +42,13 @@ public class ContextListener implements ServletContextListener {
 		UserDAO userDAO = DAOFactory.getDAOFactory()
 				.getUserDAO();
 		servletContext.setAttribute(AppConstants.USER_DAO, userDAO);
+		//log.debug("UserDAO was created");
+	}
+	
+	private void setMessageDAOAttribute(ServletContext servletContext) {
+		MessageDAO messageDAO = DAOFactory.getDAOFactory()
+				.getMessageDAO();
+		servletContext.setAttribute(AppConstants.MESSAGE_DAO, messageDAO);
 		//log.debug("UserDAO was created");
 	}
 	

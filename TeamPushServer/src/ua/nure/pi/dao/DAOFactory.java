@@ -15,4 +15,6 @@ public abstract class DAOFactory {
 	public abstract UserDAO getUserDAO();
 	
 	public abstract PassDAO getPassDAO();
+	
+	public abstract MessageDAO getMessageDAO();
 }

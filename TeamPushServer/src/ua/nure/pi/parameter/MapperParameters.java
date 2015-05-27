@@ -1,6 +1,7 @@
 package ua.nure.pi.parameter;
 
 import java.util.Collection;
+import java.util.Date;
 
 import ua.nure.pi.entity.User;
 
@@ -101,4 +102,11 @@ public interface MapperParameters {
 	String ROOM__TEAMLEADS = "TeamLeads";
 	String ROOM__ExternalUsers = "ExternalUsers";
 	String ROOM__Bans = "Bans";
+	
+	//Messages
+	String MESSAGE_ID = "MessageID";
+	String USER_SENDER = "User";
+	String DATA_SENDER = "Date";
+	String TEXT = "message";
+	String ROOM_SENDER = "Room";
 	}

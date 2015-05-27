@@ -28,6 +28,7 @@ import ua.nure.pi.dao.MessageDAO;
 import ua.nure.pi.dao.PassDAO;
 import ua.nure.pi.dao.UserDAO;
 import ua.nure.pi.dao.jdbc.JDBCUserDAO;
+import ua.nure.pi.dao.jdbc.mysql.MYSQLMessageDAO;
 import ua.nure.pi.dao.jdbc.mysql.MYSQLUserDAO;
 import ua.nure.pi.entity.Message;
 import ua.nure.pi.entity.Room;
@@ -54,6 +55,8 @@ public class MainServiceImpl extends RemoteServiceServlet implements
 	private PassDAO passDAO;
 
 	private UserDAO userDAO;
+	
+	private MessageDAO messageDAO;
 
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -72,6 +75,7 @@ public class MainServiceImpl extends RemoteServiceServlet implements
 	public MainServiceImpl()
 	{
 		userDAO = MYSQLUserDAO.getInstancce();
+		messageDAO = MYSQLMessageDAO.getInstancce();
 	}
 	@Override
 	public void init() {
@@ -79,6 +83,8 @@ public class MainServiceImpl extends RemoteServiceServlet implements
 
 		passDAO = (PassDAO) servletContext.getAttribute(AppConstants.PASS_DAO);
 		userDAO = (UserDAO) servletContext.getAttribute(AppConstants.USER_DAO);
+		messageDAO = (MessageDAO) servletContext.getAttribute(AppConstants.MESSAGE_DAO);
+		
 
 		if (passDAO == null) {
 			throw new IllegalStateException("PassDAO attribute is not exists.");
@@ -87,6 +93,10 @@ public class MainServiceImpl extends RemoteServiceServlet implements
 		if (userDAO == null) {
 			throw new IllegalStateException("UserDAO attribute is not exists.");
 		}
+		if (messageDAO == null) {
+			throw new IllegalStateException("UserDAO attribute is not exists.");
+		}
+		
 	}
 
 	@Override
@@ -116,5 +126,22 @@ public class MainServiceImpl extends RemoteServiceServlet implements
 		}
 		return false;
 	}
+
+	@Override
+	public Boolean insertMessage(Message message) throws IllegalArgumentException {
+		if (messageDAO.insertMessage(message)) {
+			 return true;
+		}
+		return false;
+	}
+
+	@Override
+	public Collection<Message> getMessages(long id) throws IllegalArgumentException {
+		if (messageDAO.getMessages(id).size() > 0) {
+			return messageDAO.getMessages(id);
+		}
+		return null;
+	}
+	
 
 }

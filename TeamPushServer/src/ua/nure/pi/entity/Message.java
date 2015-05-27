@@ -1,7 +1,7 @@
 package ua.nure.pi.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -9,15 +9,16 @@ public class Message implements Serializable, IsSerializable {
 	private static final long serialVersionUID = 1L;
 
 	private long messageId;
-	private User userSender;
+	private String userSender;
 	private Date dataSender;
 	private String message;
-	private Room room;
-	public User getUserSender() {
+	private String room;
+	
+	public String getUserSender() {
 		return userSender;
 	}
 
-	public void setUserSender(User userSender) {
+	public void setUserSender(String userSender) {
 		this.userSender = userSender;
 	}
 
@@ -37,11 +38,11 @@ public class Message implements Serializable, IsSerializable {
 		this.message = message;
 	}
 
-	public Room getRoom() {
+	public String getRoom() {
 		return room;
 	}
 
-	public void setRoom(Room room) {
+	public void setRoom(String room) {
 		this.room = room;
 	}
 

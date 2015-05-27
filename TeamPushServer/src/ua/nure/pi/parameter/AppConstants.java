@@ -15,6 +15,8 @@ public interface AppConstants {
 	public static final String ROOM_DAO = "roomDAO";
 	public static final String TEAMLEAD_DAO = "teamLeadDAO";
 	public static final String PASS_DAO = "passDAO";
+
+	public static final String MESSAGE_DAO = "messageDAO";
 	// security parameters
 	public static final String SECURITY_XML = "securityXML";
 }

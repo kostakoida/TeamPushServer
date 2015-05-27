@@ -6,7 +6,7 @@ import ua.nure.pi.entity.Message;
 
 public interface MessageDAO {
 	
-	public Collection<Message> getMessages();
+	public Collection<Message> getMessages(long id);
 	
 	public Message getMessage(long messageId);
 		
