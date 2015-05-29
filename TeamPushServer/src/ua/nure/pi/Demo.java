@@ -18,7 +18,7 @@ public class Demo {
 	public static void main(String[] args) {
 		
 		Message message = new Message();
-		message.setDataSender(new Date(1996, 21, 04));
+		message.setDataSender("1996, 21, 04");
 		message.setMessage("Message");
 		message.setRoom("Room 1");
 		message.setUserSender("kostya");

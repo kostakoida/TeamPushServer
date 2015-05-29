@@ -68,11 +68,14 @@ public class GetMessages extends HttpServlet {
 				response.getOutputStream());
 
 		mainservice = new MainServiceImpl();
+		String separator = "#, ";
 		Collection<Message> messages = mainservice.getMessages(Long.valueOf(id));
 		if (messages != null)
 			for (Message i : messages){
-				writer.write(i.getUserSender()+"+/+"+i.getMeassageId()+"+/+"+i.getRoom()+"+/+"+i.getDataSender().toString()+"+/+"+i.getMessage());
-			}
+				writer.write("<!" + i.getMeassageId() + separator + i.getMessage() + separator +
+						i.getUserSender() + separator + i.getDataSender().toString() +
+						separator + i.getRoom() + "#>");
+			}//<!5#, some text#, user#, 12.12.2012#, r;oom#>
 		else
 			writer.write("Нет новых сообщений");
 		

@@ -10,7 +10,7 @@ public class Message implements Serializable, IsSerializable {
 
 	private long messageId;
 	private String userSender;
-	private Date dataSender;
+	private String dataSender;
 	private String message;
 	private String room;
 	
@@ -22,11 +22,11 @@ public class Message implements Serializable, IsSerializable {
 		this.userSender = userSender;
 	}
 
-	public Date getDataSender() {
+	public String getDataSender() {
 		return dataSender;
 	}
 
-	public void setDataSender(Date dataSender) {
+	public void setDataSender(String dataSender) {
 		this.dataSender = dataSender;
 	}
 

@@ -88,7 +88,7 @@ public abstract class JDBCMessageDAO implements MessageDAO {
 		fc.setRoom(rs.getString(MapperParameters.ROOM_SENDER));
 		fc.setUserSender((rs.getString(MapperParameters.USER_SENDER)));
 		fc.setMessage(rs.getString(MapperParameters.TEXT));
-		fc.setDataSender(rs.getDate(MapperParameters.DATA_SENDER));
+		fc.setDataSender(rs.getString(MapperParameters.DATA_SENDER));
 		return fc;
 	}
 	@Override
@@ -146,7 +146,7 @@ public abstract class JDBCMessageDAO implements MessageDAO {
 	private void mapMessage(Message message, PreparedStatement pstmt)
 			throws SQLException {
 		pstmt.setString(1, message.getUserSender());
-		pstmt.setDate(2, message.getDataSender());
+		pstmt.setString(2, message.getDataSender());
 		pstmt.setString(3, message.getRoom());
 		pstmt.setString(4, message.getMessage());
 		}
